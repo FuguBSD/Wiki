@@ -37,3 +37,13 @@ one volume, and the four buckets. `make infra-cost` read EUR 20.66 of EUR
 is active, and its last scheduled run at 21:43:59Z succeeded in 14 seconds.
 
 Claim: GitHub fires the FuguSTX Watchdog cron far less often than its `*/30 * * * *` schedule asks: on 2026-08-30 it fired 6 times, not 48, with gaps of 3 h 03 min to 5 h 15 min. Verdict: Confirmed, from the run list dump and watchdog.yml. The worst gap sets the watchdog exposure window. The workflow comment expects this: a schedule is best effort, and the stx:expires tag and the key expiry are the backstops.
+
+The teach-serve step, run 33342530998, from the worktree clone at HEAD
+6e93620. The run succeeded, and the FP8 fit holds: Qwen3-32B-FP8 loaded and
+answered on the 80 GB H100. The serve confirmation is the endpoint answer
+itself. The GitHub log tails milestones only, and the vLLM internals (GPU
+memory, KV cache) stay in the container log on the instance. The endpoint is
+loopback: `teach-serve: vLLM answers on 127.0.0.1:8000`. The docker image was
+absent on the fresh instance, and the step pulled it before the load. The
+hand-over budgeted tens of minutes for the first serve. The step needed about
+six minutes.
