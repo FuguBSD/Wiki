@@ -57,3 +57,5 @@ Claim: the teach path reaches vLLM over the SSH tunnel of TRN-TEACH-3. The conta
 The health poll runs each 15 seconds, so a measured ready time sits inside one
 15-second window. The hand-over budgeted tens of minutes for the first serve,
 and the measured serve took near five minutes after the image pull.
+
+Claim: the CI path does not capture the vLLM GPU memory numbers at teach-serve. The driver starts the container with `docker run -d`, the runner log holds the pull and the ready line only, and no train.yml verb fetches a container log. The FP8 fit confirmation is the health answer alone. Verdict: Confirmed, log of run 33342530998 and the driver code.
