@@ -1,0 +1,4 @@
+# The library holds prose pages only. It consumes no tooling pack,
+# so this list stays short.
+.DS_Store
+explore/

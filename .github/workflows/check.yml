@@ -1,0 +1,45 @@
+name: Check
+
+# The two gates of the library: the prose standard and the secret
+# scan. The library holds prose pages only, and it has no
+# specification of its own, so it consumes no tooling pack. This
+# workflow runs the canonical scripts from FuguBSD/Tooling instead, so
+# no synced copy can drift here.
+#
+# A failure reports only. No ruleset makes these checks required, so a
+# capture always reaches the branch. Capture stays cheap, and the gate
+# stays advisory.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the library
+        uses: actions/checkout@v4
+        with:
+          path: wiki
+          # The gitleaks gate scans the full history.
+          fetch-depth: 0
+
+      - name: Checkout FuguBSD/Tooling
+        uses: actions/checkout@v4
+        with:
+          repository: FuguBSD/Tooling
+          path: tooling
+
+      # --root keeps the walk inside the library, so the tooling
+      # checkout beside it never reaches the prose gate.
+      - name: Prose standard
+        run: perl tooling/org/sync/scripts/ste-lint --root wiki
+
+      - name: Setup gitleaks
+        uses: FuguBSD/Tooling/actions/setup-gitleaks@main
+
+      - name: Secret scan
+        run: gitleaks detect --source wiki --no-banner --redact
