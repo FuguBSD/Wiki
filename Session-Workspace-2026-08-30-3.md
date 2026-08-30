@@ -47,3 +47,13 @@ loopback: `teach-serve: vLLM answers on 127.0.0.1:8000`. The docker image was
 absent on the fresh instance, and the step pulled it before the load. The
 hand-over budgeted tens of minutes for the first serve. The step needed about
 six minutes.
+
+Teach-serve facts, run 33342530998, for TRN-TEACH-6.
+
+Claim: the first teach-serve on a fresh instance pulled vllm/vllm-openai:v0.28.0 in 72 seconds, vLLM answered 290 seconds after the pull ended, and the job ran 6 min 19 s end to end. Verdict: Confirmed, log of run 33342530998. The serve log does not name the GPU type. The offer H100-1-80G comes from the up log of run gh-33342320766.
+Claim: the teach-serve action reads the action input only. scripts/train rejects --run-id for every verb except promote and teach.
+Claim: the teach path reaches vLLM over the SSH tunnel of TRN-TEACH-3. The container binds 127.0.0.1:8000 on the instance, and no public port opens.
+
+The health poll runs each 15 seconds, so a measured ready time sits inside one
+15-second window. The hand-over budgeted tens of minutes for the first serve,
+and the measured serve took near five minutes after the image pull.
