@@ -35,3 +35,5 @@ dispatch. `make infra-status` listed the H100 server as running, with one IP,
 one volume, and the four buckets. `make infra-cost` read EUR 20.66 of EUR
 300.00, 6 percent. The lease tag leaves about 17 hours. The Watchdog workflow
 is active, and its last scheduled run at 21:43:59Z succeeded in 14 seconds.
+
+Claim: GitHub fires the FuguSTX Watchdog cron far less often than its `*/30 * * * *` schedule asks: on 2026-08-30 it fired 6 times, not 48, with gaps of 3 h 03 min to 5 h 15 min. Verdict: Confirmed, from the run list dump and watchdog.yml. The worst gap sets the watchdog exposure window. The workflow comment expects this: a schedule is best effort, and the stx:expires tag and the key expiry are the backstops.
