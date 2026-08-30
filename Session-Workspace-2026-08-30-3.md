@@ -59,3 +59,10 @@ The health poll runs each 15 seconds, so a measured ready time sits inside one
 and the measured serve took near five minutes after the image pull.
 
 Claim: the CI path does not capture the vLLM GPU memory numbers at teach-serve. The driver starts the container with `docker run -d`, the runner log holds the pull and the ready line only, and no train.yml verb fetches a container log. The FP8 fit confirmation is the health answer alone. Verdict: Confirmed, log of run 33342530998 and the driver code.
+
+Claim: the serve step takes the stack with one conditional write, and the heartbeat writer refreshes the claim each 60 seconds. Verdict: Refuted in its last clause, log of run 33342530998 and the driver code. The correct mechanism: one `PUT` with `If-None-Match: *` writes the claim object once, the heartbeat writer refreshes a separate heartbeat object each 60 seconds, and only `make infra-down STACK=train` releases the claim. The watchdog reads the age of the heartbeat object, not of the claim.
+
+A caution for the library: the run identifier in a driver log line is
+`$STX_RUN_ID` from the instance boot environment, not the identifier of the
+workflow run that executed the step. A later run on the same stack prints the
+boot identifier.
