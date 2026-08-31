@@ -16,3 +16,10 @@ specification carries `Delivered:` with the unit it became.
   hide a break in another.
 - 2026-08-29 dispatch a teardown at the end of the work, because a cron schedule
   is best effort.
+
+- 2026-08-31 back every schedule with a lease tag, because the GitHub `*/30`
+  cron fires hours apart.
+- 2026-08-31 budget near six minutes for a first serve on a fresh instance, not
+  tens of minutes.
+- 2026-08-31 retry an idempotent verb once on a runner-side TLS fault, because
+  the fault sits outside the verb.
