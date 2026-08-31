@@ -227,3 +227,5 @@ done, and the LRN-DELIVER note keeps its Absent part only. LIC-RELEASE stays
 partial: the promote gate blocked on the ewt lemma cell, and sft-cpt stays
 the promoted artifact. The commits went unsigned: the Bitwarden SSH agent
 stayed down through the session.
+
+Closed: 2026-08-31T05:30:59Z
