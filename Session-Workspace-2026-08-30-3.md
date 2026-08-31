@@ -163,3 +163,9 @@ and the train keys deleted. infra-status then listed zero train resources,
 with the four persistent buckets intact. The spend stopped. Only the T1
 sweep, the promote decision, and the closing work remain, and none of them
 needs an instance.
+
+Claim: the down run (33354203115) destroyed 4 resources, released the stack claim, and deleted the train keys. The stack lived from 23:38:07Z on 2026-08-30 to 03:33:59Z on 2026-08-31, 3.93 hours, so the campaign compute cost EUR 11.27 at EUR 2.8665 per hour, or EUR 11.47 by started hours. Verdict: Confirmed with one correction, the down log. The correction: the server destruction stamp is 03:33:59Z, four seconds earlier than first reported, and no derived number changes. The hourly rate comes from the up log of run gh-33342320766, where a verifier confirmed it.
+
+The whole campaign compute cost sits under the low end of the teacher-row
+estimate alone (EUR 14 to 43). The serve efficiency and the bounded batches
+kept the teacher at near 2.6 of its 5 to 15 budgeted GPU-hours.
