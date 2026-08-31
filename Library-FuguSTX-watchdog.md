@@ -38,3 +38,14 @@ Scope: one day, one repository. The worst gap sets the watchdog exposure window.
 The stx:expires tag and the key expiry carry the guarantee, because a schedule
 is best effort.
 Maps to: the shared instructions, FuguTTX IAC-TRAIN.
+
+**One conditional PUT takes the stack claim, and a separate heartbeat object
+carries the liveness.**
+
+Evidence: run 33342530998 and the driver code at commit 6e93620. A `PUT` with
+`If-None-Match: *` writes the claim object once. The heartbeat writer refreshes
+a separate heartbeat object each 60 seconds. Only `make infra-down STACK=train`
+releases the claim, and the watchdog reads the age of the heartbeat object, not
+of the claim.
+Scope: the train stack claim protocol at commit 6e93620.
+Maps to: the shared instructions, FuguTTX TRN-EXEC.
