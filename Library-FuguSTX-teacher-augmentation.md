@@ -58,3 +58,13 @@ Scope: the judge filter at commit 6e93620. In batch 1 the passes disagreed on
 159 of 200 proposals, so check 1 is the dominant gate, by a factor of six over
 all other reject reasons combined.
 Maps to: FuguTTX TRN-AUG.
+
+**Six teach batches accepted 111 of 1200 proposals, an overall rate of 0.0925.**
+
+Evidence: the six teach reports of run gh-33342320766, under the bucket prefix
+runs/gh-33342320766/. The per-batch rates span 0.055 to 0.135, and the disagree
+count stays in 149 to 160 per batch of 200.
+Scope: six sequential batches, generation temperature 0.9. The disagree gate is
+stable, and the accepted count swings by a factor of 2.5 between batches. The
+batch-to-run mapping comes from the bucket prefix, not from a report field.
+Maps to: FuguTTX TRN-AUG.
