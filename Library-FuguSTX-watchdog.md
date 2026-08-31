@@ -28,3 +28,13 @@ before the reap. The tag backstop carried the guarantee.
 Scope: sixteen slots of one night, in one repository. The skip rate can differ
 elsewhere. Dispatch a teardown at the end of the work.
 Maps to: the shared instructions, FuguTTX IAC-TRAIN.
+
+**GitHub fires the `*/30` watchdog cron hours apart.**
+
+Evidence: run gh-33342320766, the watchdog run list of 2026-08-30, and
+watchdog.yml. The cron fired 6 times, not 48, with gaps of 3 h 03 min to
+5 h 15 min.
+Scope: one day, one repository. The worst gap sets the watchdog exposure window.
+The stx:expires tag and the key expiry carry the guarantee, because a schedule
+is best effort.
+Maps to: the shared instructions, FuguTTX IAC-TRAIN.
