@@ -90,3 +90,12 @@ Scope: batches 2 to 6, generation temperature 0.9, distinct batch seeds. Batch 1
 has no pairs baseline in the records. The teacher repeats itself measurably: 12
 of 96 accepted records were text duplicates.
 Maps to: FuguTTX TRN-AUG.
+
+**The 111 accepted teacher sentences have zero overlap with the eval lane.**
+
+Evidence: run gh-33342320766, an independent comparator with a passed
+sensitivity test, verbatim and normalized. The eval lane holds 4310 records: ewt
+test 2077, gum test 1233, pud 1000, at UD r2.18.
+Scope: one run, one eval-lane manifest. The memorization confound of the review
+panel does not apply to the T1 scores of sft-aug through this channel.
+Maps to: FuguTTX TRN-AUG, FuguTTX D5.
