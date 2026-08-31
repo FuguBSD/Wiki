@@ -2,8 +2,6 @@
 
 Rehearses: FuguTTX TRN-AUG, FuguTTX D4
 
-This rehearsal is planned. No campaign has run it, so this page holds no claim.
-
 **A first teach-serve on a fresh instance needs near six minutes, not tens of
 minutes.**
 
