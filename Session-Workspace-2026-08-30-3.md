@@ -85,3 +85,19 @@ it with a measurement: the two passes disagreed on 159 of 200 proposals, 79.5
 percent. The distinct seeds produce strongly non-identical samples at
 temperature 0.2, and check 1 is the dominant filter gate by a factor of six
 over all other reject reasons combined.
+
+The teach loop of run gh-33342320766 is complete: six batches, no failure,
+the last batch ended at 02:18:02Z with more than 14 hours of lease headroom.
+The per-batch table, from the six teach reports:
+
+| Batch | Accepted | Rate  | disagree | tag | count | tree | word |
+| ----- | -------- | ----- | -------- | --- | ----- | ---- | ---- |
+| 1     | 15       | 0.075 | 159      | 12  | 0     | 7    | 7    |
+| 2     | 26       | 0.130 | 149      | 7   | 0     | 11   | 7    |
+| 3     | 27       | 0.135 | 151      | 7   | 1     | 8    | 6    |
+| 4     | 14       | 0.070 | 159      | 8   | 0     | 15   | 4    |
+| 5     | 11       | 0.055 | 160      | 12  | 0     | 8    | 9    |
+| 6     | 18       | 0.090 | 149      | 14  | 0     | 9    | 10   |
+
+Each batch proposed 200. The disagree gate is stable, and the accepted count
+swings by a factor of 2.5 between batches at temperature 0.9 generation.
