@@ -103,3 +103,9 @@ Each batch proposed 200. The disagree gate is stable, and the accepted count
 swings by a factor of 2.5 between batches at temperature 0.9 generation.
 
 Claim: six teach batches of run gh-33342320766 proposed 1200 sentences and accepted 111, an overall rate of 0.0925. The per-batch rates span 0.055 to 0.135, and the disagree count stays in 149 to 160 per batch of 200. Verdict: Confirmed, the six teach reports. The batch-to-run mapping comes from the bucket prefix runs/gh-33342320766/, not from a field in the reports.
+
+The teach-stop step, run 33350323616, passed in 15 seconds. The verb needs no
+run_id input. The observer moved the campaign to the training passes: cpt,
+then merge-cpt, then sft-aug. The offline eval-lane overlap check of the 111
+accepted sentences started in parallel, outside the teach path, per the open
+review-panel item.
