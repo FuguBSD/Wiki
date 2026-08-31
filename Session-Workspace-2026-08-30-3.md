@@ -137,3 +137,9 @@ trainer read pairs-aug.jsonl from the corpus sync, trained from the merged
 CPT base with a qlora adapter, and saved /scratch/outputs/sft-aug. The final
 line confirms the checkpoints reached Object Storage. The observer dispatched
 gguf and score for the name sft-aug.
+
+Claim: the sft-aug pass (run 33350914761) trained from /scratch/outputs/cpt-merged with a qlora adapter on 22222 examples (11 dropped over-length to 22211), ran 464 steps to epoch 1.991 in train_runtime 813.5 s, moved the logged loss from 2.881 to 0.0486 with mean train_loss 0.1859, and hit no out-of-memory error. Verdict: Confirmed with one refuted part, sft-aug log. The correction: the device_reserved peak was 39.06 GiB in the first epoch, and the run never reaches an epoch 2; the 34.79 GiB summary value is the final reading, not the peak.
+
+The "22111 base + 111 teacher" arithmetic is unsupported. No record prints a
+base row count, and the pairs increments are smaller than the accepted
+counts, so the rebuild deduplication drops some accepted records.
