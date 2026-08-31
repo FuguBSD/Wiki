@@ -38,3 +38,12 @@ ready line only, and no train.yml verb fetches a container log.
 Scope: the teach-serve verb at commit 6e93620. The FP8 fit confirmation is the
 health answer alone.
 Maps to: FuguTTX TRN-AUG, FuguTTX TRN-EXEC.
+
+**Teach batch 1 accepted 15 of 200 proposals, and the disagree reason dominated
+the rejects.**
+
+Evidence: the teach report and the log of run 33342886087, under run
+gh-33342320766. Rate 0.075, and the teach step ran 22 min 49 s. The rejects:
+disagree 159, tag 12, tree 7, word 7, count 0.
+Scope: one batch, generation temperature 0.9, at commit 6e93620.
+Maps to: FuguTTX TRN-AUG.
