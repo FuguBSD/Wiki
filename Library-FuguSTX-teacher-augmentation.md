@@ -47,3 +47,14 @@ gh-33342320766. Rate 0.075, and the teach step ran 22 min 49 s. The rejects:
 disagree 159, tag 12, tree 7, word 7, count 0.
 Scope: one batch, generation temperature 0.9, at commit 6e93620.
 Maps to: FuguTTX TRN-AUG.
+
+**The reject reason `disagree` counts a disagreement of the two seeded
+annotation passes.**
+
+Evidence: run gh-33342320766; judge.py and teacher.py at the run commit 6e93620.
+Check 1 of the judge filter runs two passes at temperature 0.2, seeds 11 and 23,
+and compares them after normalization.
+Scope: the judge filter at commit 6e93620. In batch 1 the passes disagreed on
+159 of 200 proposals, so check 1 is the dominant gate, by a factor of six over
+all other reject reasons combined.
+Maps to: FuguTTX TRN-AUG.
