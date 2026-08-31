@@ -46,3 +46,15 @@ Scope: one pass on the H100-1-80G stack of run gh-33342320766. The 8-step bound
 comes from `num_epochs: 1` over the packed data, not from a max_steps cap in
 train/cpt.yml.
 Maps to: FuguTTX TRN-CPT, FuguTTX TRN-EXEC.
+
+**The sft-aug pass trained from the merged CPT base with a qlora adapter, with
+no out-of-memory error.**
+
+Evidence: run 33350914761, the sft-aug log. 22222 examples, with 11 dropped
+over-length to 22211. 464 steps to epoch 1.991 in train_runtime 813.5 s. The
+logged loss moved from 2.881 to 0.0486, at mean train_loss 0.1859. The
+device_reserved peak was 39.06 GiB, in the first epoch; the 34.79 GiB summary
+value is the final reading, not the peak.
+Scope: one pass from /scratch/outputs/cpt-merged, on the stack of run
+gh-33342320766. The run never reaches an epoch 2.
+Maps to: FuguTTX TRN-AUG, FuguTTX TRN-SFT, FuguTTX TRN-EXEC.
