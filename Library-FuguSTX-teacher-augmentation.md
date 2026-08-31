@@ -77,3 +77,16 @@ the output and the status, and returns 0 on every path. The step exit code is
 the only stop signal in the run record.
 Scope: the teach-stop verb at commit 6e93620.
 Maps to: FuguTTX TRN-AUG.
+
+**The teacher proposed 12 duplicate sentences across batches, and the rebuild
+dropped them.**
+
+Evidence: run gh-33342320766, the six teach logs, the six reports, and the
+rebuild code at commit 6e93620. The pairs-aug.jsonl count after each batch:
+22138, 22162, 22187, 22199, 22208, 22222. The increments of batches 2 to 6 (24,
+25, 12, 9, 14) fall short of the accepted counts (26, 27, 14, 11, 18) by 12. The
+rebuild merges the accepted files through a text-keyed duplicate drop.
+Scope: batches 2 to 6, generation temperature 0.9, distinct batch seeds. Batch 1
+has no pairs baseline in the records. The teacher repeats itself measurably: 12
+of 96 accepted records were text duplicates.
+Maps to: FuguTTX TRN-AUG.
