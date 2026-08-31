@@ -77,3 +77,11 @@ rate stability across batches. The loop stops early on a failed run, on a
 batch rate under 0.02, or at 14:30Z for lease headroom.
 
 Claim: teach batch 1 of run gh-33342320766 (workflow run 33342886087) proposed 200 sentences, accepted 15, rate 0.075, and the teach step ran 22 min 49 s. The reject reasons: disagree 159, tag 12, tree 7, word 7, count 0. Verdict: Confirmed, teach report and run log of 33342886087. The attribution of the disagree count to the two seeded passes awaits a code-path check.
+
+Claim: the reject reason `disagree` counts the proposals where the two seeded annotation passes disagree: check 1 of the judge filter, temperature 0.2, seeds 11 and 23, compared after normalization. Verdict: Confirmed, judge.py and teacher.py at the run commit 6e93620.
+
+The hand-over held check-1 independence as an open question. Batch 1 answers
+it with a measurement: the two passes disagreed on 159 of 200 proposals, 79.5
+percent. The distinct seeds produce strongly non-identical samples at
+temperature 0.2, and check 1 is the dominant filter gate by a factor of six
+over all other reject reasons combined.
