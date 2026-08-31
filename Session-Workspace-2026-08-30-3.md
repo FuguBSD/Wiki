@@ -179,3 +179,5 @@ any cell below a threshold, so the observer does not dispatch the promote
 verb. The sft-aug LAS beats the baseline in all three treebanks, and the miss
 sits in one lemma cell by 0.0003. A verifier checks the nine comparisons
 before the claim enters the library.
+
+Claim: the T1 sweep of sft-aug (run 33354195024, eval split, CPU, llama b10666, model hash 8aa0b9...82be) scored ewt 0.9377/0.9506/0.7738, gum 0.9386/0.9569/0.7673, pud 0.9543/0.9637/0.7848 as UPOS/Lemma/LAS. Eight of the nine tier T1 cells pass. The ewt lemma cell fails by 0.0003 (0.9506 against 0.9509). The promote gate blocks on any cell below a threshold, so sft-aug is not promoted, and sft-cpt stays the promoted artifact. Verdict: Confirmed, the T1 scorecard, the spec table, and the hand-over gate. The LAS margin is positive in all three treebanks (+0.0019, +0.0026, +0.0031), so the augmentation helped parsing and cost one lemma cell.
