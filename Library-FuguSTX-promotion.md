@@ -37,3 +37,15 @@ Scope: dev split, llama.cpp b10666, GPU decoding. Every artifact key carries the
 stack-up run identifier gh-33342320766, because the instance boot environment
 fixes STX_RUN_ID at up.
 Maps to: FuguTTX D5, FuguTTX IAC-DURA.
+
+**The promote gate blocked sft-aug on one lemma cell, by 0.0003.**
+
+Evidence: run 33354195024, the T1 scorecard against the tier T1 table of
+spec/evaluation.md. The scores as UPOS/Lemma/LAS: ewt 0.9377/0.9506/0.7738, gum
+0.9386/0.9569/0.7673, pud 0.9543/0.9637/0.7848. Eight of the nine cells pass,
+and the ewt lemma cell fails at 0.9506 against the 0.9509 threshold. The LAS
+margin is positive in all three treebanks: +0.0019, +0.0026, +0.0031.
+Scope: eval split, CPU shards, llama b10666, model hash 8aa0b9...82be. The gate
+blocks on any cell below a threshold, so sft-cpt stays the promoted artifact.
+The augmentation helped parsing and cost one lemma cell.
+Maps to: FuguTTX D2, FuguTTX D5.
