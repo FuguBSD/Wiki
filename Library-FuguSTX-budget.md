@@ -19,3 +19,10 @@ the good boot, at EUR 2.8665 per hour. Boot friction cost about EUR 3, and the
 whole campaign cost about EUR 21.
 Scope: one campaign, one budget.
 Maps to: FuguTTX IAC-PREREQ, the shared instructions.
+
+**The forecast gate passed at a 17-hour lease.**
+
+Evidence: run gh-33342320766, the gate line of the up log: EUR 20.66 consumed
+plus EUR 48.73 forecast, under the EUR 300.00 budget.
+Scope: one campaign, one budget, at EUR 2.8665 per hour.
+Maps to: FuguTTX IAC-PREREQ, the shared instructions.
