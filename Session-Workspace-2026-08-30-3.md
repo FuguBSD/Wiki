@@ -156,3 +156,10 @@ parallel: the sweep reads the GGUF from the checkpoint bucket, and it
 needs no train instance.
 
 Claim: the dev scorecard of sft-aug (run 33352183041, llama.cpp b10666, GPU): ewt LAS 0.7604, lemma 0.9411, upos 0.9267 over 2001 sentences with 76 failures; gum LAS 0.7621, lemma 0.9562, upos 0.9374 over 1383 sentences with 22 failures. The gguf run exported a Q8_0 artifact of 633.5 MB with 310 tensors, model hash 8aa0b9340f979dca1f1cdd09da62c6d10a07ad7996c919e5e5c8a694ec5582be. Verdict: Confirmed, the gguf and score logs. The counts agree with the ratios: 19122 of 25148 and 18795 of 24661.
+
+The down step (run 33354203115) destroyed the train stack: the server, the
+IP, the 3000 GB scratch volume, and the campaign SSH key. The claim released,
+and the train keys deleted. infra-status then listed zero train resources,
+with the four persistent buckets intact. The spend stopped. Only the T1
+sweep, the promote decision, and the closing work remain, and none of them
+needs an instance.
