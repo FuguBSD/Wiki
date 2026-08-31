@@ -118,3 +118,5 @@ run prefix in stx-artifacts holds the reports and the rejects only. This
 follows COR-AUG-1: an accepted record enters the training lane, and the
 training lane reads the corpus bucket. The eval lane sits in its own bucket,
 and its manifest pins UD r2.18 with 4310 records.
+
+Claim: the 111 accepted teacher sentences of run gh-33342320766 have zero overlap with the eval lane, verbatim and normalized. The eval lane holds 4310 records: ewt test 2077, gum test 1233, pud 1000, at UD r2.18. Verdict: Confirmed, by an independent comparator with a passed sensitivity test. The memorization confound from the review panel does not apply to the T1 scores of sft-aug through this channel.
