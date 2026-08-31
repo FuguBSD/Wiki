@@ -154,3 +154,5 @@ the instance boot environment fixes STX_RUN_ID at up. The observer
 dispatched the down verb to stop the spend, and the T1 sweep in
 parallel: the sweep reads the GGUF from the checkpoint bucket, and it
 needs no train instance.
+
+Claim: the dev scorecard of sft-aug (run 33352183041, llama.cpp b10666, GPU): ewt LAS 0.7604, lemma 0.9411, upos 0.9267 over 2001 sentences with 76 failures; gum LAS 0.7621, lemma 0.9562, upos 0.9374 over 1383 sentences with 22 failures. The gguf run exported a Q8_0 artifact of 633.5 MB with 310 tensors, model hash 8aa0b9340f979dca1f1cdd09da62c6d10a07ad7996c919e5e5c8a694ec5582be. Verdict: Confirmed, the gguf and score logs. The counts agree with the ratios: 19122 of 25148 and 18795 of 24661.
