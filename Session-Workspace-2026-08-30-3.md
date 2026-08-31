@@ -66,3 +66,12 @@ A caution for the library: the run identifier in a driver log line is
 `$STX_RUN_ID` from the instance boot environment, not the identifier of the
 workflow run that executed the step. A later run on the same stack prints the
 boot identifier.
+
+The observer decision after teach batch 1. The batch accepted 15 of 200, and
+the disagree reason dominated the rejects. The spec sets no augmentation
+volume target: the deliverables are the rehearsal, the sft-aug pass, and the
+rates for TRN-TEACH-6. The observer dispatched five more batches, run
+sequentially, near 1,000 more proposals and near two more teacher hours. This
+stays inside the 5 to 15 GPU-hour teacher budget row, and it measures the
+rate stability across batches. The loop stops early on a failed run, on a
+batch rate under 0.02, or at 14:30Z for lease headroom.
