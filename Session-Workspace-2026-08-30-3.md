@@ -111,3 +111,10 @@ accepted sentences started in parallel, outside the teach path, per the open
 review-panel item.
 
 Claim: the teach-stop verb prints no stop confirmation. cmd_teach_stop runs `docker rm -f stx-vllm` in void context, discards the output and the status, and returns 0 on every path. The step exit code is the only stop signal in the run record. Verdict: Confirmed, log of run 33350323616 and scripts/train-driver lines 505-511 at commit 6e93620. The idempotence motive and the "next pass fails loudly" expectation stay unsupported: no record names the motive, and no train-pass log yet shows the loud failure.
+
+The accepted teacher records live in the corpus bucket, at
+`runs/<run id>/accepted-*.jsonl` under stx-corpus, not in stx-artifacts. The
+run prefix in stx-artifacts holds the reports and the rejects only. This
+follows COR-AUG-1: an accepted record enters the training lane, and the
+training lane reads the corpus bucket. The eval lane sits in its own bucket,
+and its manifest pins UD r2.18 with 4310 records.
