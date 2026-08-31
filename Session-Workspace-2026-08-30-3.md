@@ -181,3 +181,12 @@ sits in one lemma cell by 0.0003. A verifier checks the nine comparisons
 before the claim enters the library.
 
 Claim: the T1 sweep of sft-aug (run 33354195024, eval split, CPU, llama b10666, model hash 8aa0b9...82be) scored ewt 0.9377/0.9506/0.7738, gum 0.9386/0.9569/0.7673, pud 0.9543/0.9637/0.7848 as UPOS/Lemma/LAS. Eight of the nine tier T1 cells pass. The ewt lemma cell fails by 0.0003 (0.9506 against 0.9509). The promote gate blocks on any cell below a threshold, so sft-aug is not promoted, and sft-cpt stays the promoted artifact. Verdict: Confirmed, the T1 scorecard, the spec table, and the hand-over gate. The LAS margin is positive in all three treebanks (+0.0019, +0.0026, +0.0031), so the augmentation helped parsing and cost one lemma cell.
+
+Consolidation, 2026-08-31. The infrastructure claims moved to the library.
+
+Admitted: the H100-1-80G price of EUR 2.8665 per hour, to Library-FuguSTX-price.
+Admitted: the up run delivery of four resources and the lease tag, to Library-FuguSTX-train-stack.
+Admitted: the down run teardown and the campaign compute cost, to Library-FuguSTX-train-stack.
+Admitted: the forecast gate pass at the 17-hour lease, to Library-FuguSTX-budget.
+Admitted: the `*/30` cron gap measurement, to Library-FuguSTX-watchdog.
+Admitted: the corrected claim and heartbeat mechanism, to Library-FuguSTX-watchdog.
