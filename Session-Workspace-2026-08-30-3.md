@@ -120,3 +120,10 @@ training lane reads the corpus bucket. The eval lane sits in its own bucket,
 and its manifest pins UD r2.18 with 4310 records.
 
 Claim: the 111 accepted teacher sentences of run gh-33342320766 have zero overlap with the eval lane, verbatim and normalized. The eval lane holds 4310 records: ewt test 2077, gum test 1233, pud 1000, at UD r2.18. Verdict: Confirmed, by an independent comparator with a passed sensitivity test. The memorization confound from the review panel does not apply to the T1 scores of sft-aug through this channel.
+
+The training passes started after teach-stop. The cpt verb and the merge-cpt
+verb passed, and the merged base sits at /scratch/outputs/cpt-merged on the
+instance. The first merge-cpt attempt failed before any instance work, in the
+deps step of the GitHub runner, and the operator retried the idempotent verb
+once. The observer accepted the retry: the failure sat in the runner network,
+not in the verb. The sft-aug dispatch followed.
