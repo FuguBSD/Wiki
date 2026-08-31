@@ -14,3 +14,10 @@ Scope: Qwen3-32B-FP8 on the 80 GB H100 of run gh-33342320766. The serve log does
 not name the GPU type; the offer comes from the up log. The 15-second health
 poll bounds each ready time to one window.
 Maps to: FuguTTX TRN-AUG.
+
+**The teach-serve action reads the action input only.**
+
+Evidence: run gh-33342320766; scripts/train at the run commit 6e93620. The
+script rejects `--run-id` for every verb except promote and teach.
+Scope: the train.yml inputs at commit 6e93620.
+Maps to: FuguTTX TRN-AUG.
