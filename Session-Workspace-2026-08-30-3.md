@@ -145,3 +145,12 @@ base row count, and the pairs increments are smaller than the accepted
 counts, so the rebuild deduplication drops some accepted records.
 
 Claim: the pairs-aug.jsonl count after each teach batch is 22138, 22162, 22187, 22199, 22208, 22222, and the increments of batches 2 to 6 (24, 25, 12, 9, 14) fall short of the accepted counts (26, 27, 14, 11, 18) by 12. The rebuild merges the accepted files through a text-keyed duplicate drop, so the teacher proposed 12 duplicate sentences across batches that the judge accepted twice. Batch 1 has no pairs baseline in the records. Verdict: Confirmed, the six teach logs, the six reports, and the rebuild code at commit 6e93620. The teacher repeats itself measurably at temperature 0.9 across batch seeds: 12 of 96 accepted records in batches 2 to 6 were text duplicates.
+
+The gguf and score verbs passed for sft-aug (runs 33351940505 and
+33352183041). The Q8_0 artifact reached the checkpoint bucket, and the
+dev scorecard reached the artifacts bucket. Every artifact key of the
+campaign carries the stack-up run identifier gh-33342320766, because
+the instance boot environment fixes STX_RUN_ID at up. The observer
+dispatched the down verb to stop the spend, and the T1 sweep in
+parallel: the sweep reads the GGUF from the checkpoint bucket, and it
+needs no train instance.
