@@ -219,3 +219,11 @@ The final cost reading after the teardown: `make infra-cost` reads EUR 32.05
 of EUR 300.00 (10 percent). The month-to-date delta over the campaign is EUR
 11.39, inside the EUR 11.27 to 11.47 band that the stack life computes. The
 billing agrees with the lease arithmetic.
+
+The campaign closed. The FuguSTX closing change merged as squash 022961a on
+main, and the Check run passed. spec/LEARNING.md holds batch 2 of the P4
+campaign, and it cites the seven library pages. STATUS.md sets TRN-TEACH to
+done, and the LRN-DELIVER note keeps its Absent part only. LIC-RELEASE stays
+partial: the promote gate blocked on the ewt lemma cell, and sft-cpt stays
+the promoted artifact. The commits went unsigned: the Bitwarden SSH agent
+stayed down through the session.
