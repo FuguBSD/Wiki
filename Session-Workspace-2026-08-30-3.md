@@ -190,3 +190,16 @@ Admitted: the down run teardown and the campaign compute cost, to Library-FuguST
 Admitted: the forecast gate pass at the 17-hour lease, to Library-FuguSTX-budget.
 Admitted: the `*/30` cron gap measurement, to Library-FuguSTX-watchdog.
 Admitted: the corrected claim and heartbeat mechanism, to Library-FuguSTX-watchdog.
+
+Consolidation, 2026-08-31. The teacher claims moved to the library.
+
+Admitted: the first teach-serve timing on a fresh instance, to Library-FuguSTX-teacher-augmentation.
+Admitted: the teach-serve action input fact, to Library-FuguSTX-teacher-augmentation.
+Admitted: the SSH tunnel and the loopback bind, to Library-FuguSTX-teacher-augmentation.
+Admitted: the absent vLLM GPU memory capture in the CI path, to Library-FuguSTX-teacher-augmentation.
+Admitted: the teach batch 1 rates and reject reasons, to Library-FuguSTX-teacher-augmentation.
+Admitted: the `disagree` reject reason mechanism, to Library-FuguSTX-teacher-augmentation.
+Admitted: the six-batch totals and rate span, to Library-FuguSTX-teacher-augmentation.
+Admitted: the silent teach-stop verb, to Library-FuguSTX-teacher-augmentation.
+Admitted: the 12 duplicate accepted sentences and the rebuild drop, to Library-FuguSTX-teacher-augmentation.
+Admitted: the zero eval-lane overlap of the 111 accepted sentences, to Library-FuguSTX-teacher-augmentation.
