@@ -24,3 +24,12 @@ Evidence: the first tier T1 sweep of FuguSTX failed on all twelve shards in
 under a minute at zero GPU cost (run 33240741185).
 Scope: a CPU sweep before a GPU run.
 Maps to: FuguTTX D2.
+
+**Every numbered claim met a verifier before the library.**
+
+Evidence: the FuguSTX P4 teacher campaign, run gh-33342320766, session page
+2026-08-30-3. The observer, operator, and verifier loop held for 22 claims. The
+verifier refuted one full claim and two claim parts, all operator-reported
+numbers or mechanisms, and only the corrections moved. Three more claims moved
+with minor corrections.
+Scope: one campaign, 22 claims, 21 admitted entries.
