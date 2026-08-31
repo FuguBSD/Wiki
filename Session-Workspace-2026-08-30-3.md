@@ -169,3 +169,13 @@ Claim: the down run (33354203115) destroyed 4 resources, released the stack clai
 The whole campaign compute cost sits under the low end of the teacher-row
 estimate alone (EUR 14 to 43). The serve efficiency and the bounded batches
 kept the teacher at near 2.6 of its 5 to 15 budgeted GPU-hours.
+
+The T1 sweep for sft-aug (run 33354195024) completed in about 86 minutes on
+twelve CPU shards, and the scorecard reached the artifacts bucket. The
+observer ran the promotion review by hand against the tier T1 table of
+spec/evaluation.md. Eight of nine cells pass. The ewt lemma cell fails:
+0.9506 against the 0.9509 threshold. The hand-over rule blocks the promote on
+any cell below a threshold, so the observer does not dispatch the promote
+verb. The sft-aug LAS beats the baseline in all three treebanks, and the miss
+sits in one lemma cell by 0.0003. A verifier checks the nine comparisons
+before the claim enters the library.
