@@ -127,3 +127,5 @@ instance. The first merge-cpt attempt failed before any instance work, in the
 deps step of the GitHub runner, and the operator retried the idempotent verb
 once. The observer accepted the retry: the failure sat in the runner network,
 not in the verb. The sft-aug dispatch followed.
+
+Claim: the first merge-cpt attempt (run 33350659650) failed in the deps step on `Unable to establish SSL connection.` from the opentofu download, before any Scaleway or instance work, and the identical retry (run 33350760205) passed and produced /scratch/outputs/cpt-merged. Verdict: Confirmed with corrections, the two merge-cpt logs. The corrections: the error fell 6.5 seconds into the job log, not 9; the retry log spans 39.9 seconds, not 50; and the fault localizes to a transient TLS fault between the runner and the GitHub release CDN, not to the runner alone and not to the verb or the project scripts.
