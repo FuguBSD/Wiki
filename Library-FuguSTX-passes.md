@@ -24,3 +24,14 @@ Scope: one run, dev split, 0.6B, UD r2.18, llama b10666. The comparison isolates
 the CPT increment only. No scorecard measures the base model without SFT, so the
 SFT gain itself is unmeasured.
 Maps to: FuguTTX TRN-CPT, FuguTTX D4.
+
+**A retry of an idempotent verb repairs a runner-side TLS fault.**
+
+Evidence: runs 33350659650 and 33350760205. The first merge-cpt attempt failed
+in the deps step on `Unable to establish SSL connection.` from the opentofu
+download, 6.5 seconds into the job log, before any Scaleway or instance work.
+The identical retry passed, spans 39.9 seconds in the log, and produced
+/scratch/outputs/cpt-merged.
+Scope: a transient TLS fault between the runner and the GitHub release CDN. The
+fault sits outside the verb and the project scripts.
+Maps to: FuguTTX TRN-EXEC.
