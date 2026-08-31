@@ -29,3 +29,12 @@ Evidence: run 33342530998, the line `teach-serve: vLLM answers on
 public port opens.
 Scope: the tunnel of FuguSTX TRN-TEACH-3, at commit 6e93620.
 Maps to: FuguTTX TRN-AUG.
+
+**The CI path captures no vLLM GPU memory number at teach-serve.**
+
+Evidence: run 33342530998 and the driver code at commit 6e93620. The driver
+starts the container with `docker run -d`, the runner log holds the pull and the
+ready line only, and no train.yml verb fetches a container log.
+Scope: the teach-serve verb at commit 6e93620. The FP8 fit confirmation is the
+health answer alone.
+Maps to: FuguTTX TRN-AUG, FuguTTX TRN-EXEC.
