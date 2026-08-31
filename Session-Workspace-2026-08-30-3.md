@@ -214,3 +214,8 @@ Admitted: the T1 sweep and the blocked promote, to Library-FuguSTX-promotion.
 
 Held back: the up job duration claim. The verdict refuted it in full, so it
 stays here per LIB-ENTRY-4. The log-measured 59 seconds stays a session record.
+
+The final cost reading after the teardown: `make infra-cost` reads EUR 32.05
+of EUR 300.00 (10 percent). The month-to-date delta over the campaign is EUR
+11.39, inside the EUR 11.27 to 11.47 band that the stack life computes. The
+billing agrees with the lease arithmetic.
