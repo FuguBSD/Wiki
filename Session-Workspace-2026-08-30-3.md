@@ -203,3 +203,14 @@ Admitted: the six-batch totals and rate span, to Library-FuguSTX-teacher-augment
 Admitted: the silent teach-stop verb, to Library-FuguSTX-teacher-augmentation.
 Admitted: the 12 duplicate accepted sentences and the rebuild drop, to Library-FuguSTX-teacher-augmentation.
 Admitted: the zero eval-lane overlap of the 111 accepted sentences, to Library-FuguSTX-teacher-augmentation.
+
+Consolidation, 2026-08-31. The pass and promotion claims moved to the library.
+
+Admitted: the merge-cpt TLS fault and the repaired retry, with the verifier corrections, to Library-FuguSTX-passes.
+Admitted: the CPT rehearsal numbers, with the two corrections, to Library-FuguSTX-passes.
+Admitted: the sft-aug pass numbers, with the corrected memory peak, to Library-FuguSTX-passes.
+Admitted: the sft-aug dev scorecard and the Q8_0 export, to Library-FuguSTX-promotion.
+Admitted: the T1 sweep and the blocked promote, to Library-FuguSTX-promotion.
+
+Held back: the up job duration claim. The verdict refuted it in full, so it
+stays here per LIB-ENTRY-4. The log-measured 59 seconds stays a session record.
