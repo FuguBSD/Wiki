@@ -143,3 +143,5 @@ Claim: the sft-aug pass (run 33350914761) trained from /scratch/outputs/cpt-merg
 The "22111 base + 111 teacher" arithmetic is unsupported. No record prints a
 base row count, and the pairs increments are smaller than the accepted
 counts, so the rebuild deduplication drops some accepted records.
+
+Claim: the pairs-aug.jsonl count after each teach batch is 22138, 22162, 22187, 22199, 22208, 22222, and the increments of batches 2 to 6 (24, 25, 12, 9, 14) fall short of the accepted counts (26, 27, 14, 11, 18) by 12. The rebuild merges the accepted files through a text-keyed duplicate drop, so the teacher proposed 12 duplicate sentences across batches that the judge accepted twice. Batch 1 has no pairs baseline in the records. Verdict: Confirmed, the six teach logs, the six reports, and the rebuild code at commit 6e93620. The teacher repeats itself measurably at temperature 0.9 across batch seeds: 12 of 96 accepted records in batches 2 to 6 were text duplicates.
