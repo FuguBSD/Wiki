@@ -35,3 +35,14 @@ The identical retry passed, spans 39.9 seconds in the log, and produced
 Scope: a transient TLS fault between the runner and the GitHub release CDN. The
 fault sits outside the verb and the project scripts.
 Maps to: FuguTTX TRN-EXEC.
+
+**The CPT rehearsal ran 8 steps over 7009 prompts, with zero dropped rows.**
+
+Evidence: run 33350483695, the cpt log and the run metadata. Tokenization gave
+7011 pre-packing rows, which packing then bins. train_runtime 19.8 s, train_loss
+5.997, GPU memory peak 29.66 GiB active, no out-of-memory error, and a job of
+1 min 58 s. The teacher container was absent before the launch.
+Scope: one pass on the H100-1-80G stack of run gh-33342320766. The 8-step bound
+comes from `num_epochs: 1` over the packed data, not from a max_steps cap in
+train/cpt.yml.
+Maps to: FuguTTX TRN-CPT, FuguTTX TRN-EXEC.
