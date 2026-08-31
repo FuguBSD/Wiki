@@ -21,3 +21,11 @@ Evidence: run gh-33342320766; scripts/train at the run commit 6e93620. The
 script rejects `--run-id` for every verb except promote and teach.
 Scope: the train.yml inputs at commit 6e93620.
 Maps to: FuguTTX TRN-AUG.
+
+**The teach path reaches vLLM over the SSH tunnel only.**
+
+Evidence: run 33342530998, the line `teach-serve: vLLM answers on
+127.0.0.1:8000`. The container binds 127.0.0.1:8000 on the instance, and no
+public port opens.
+Scope: the tunnel of FuguSTX TRN-TEACH-3, at commit 6e93620.
+Maps to: FuguTTX TRN-AUG.
