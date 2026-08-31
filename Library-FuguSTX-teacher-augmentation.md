@@ -68,3 +68,12 @@ Scope: six sequential batches, generation temperature 0.9. The disagree gate is
 stable, and the accepted count swings by a factor of 2.5 between batches. The
 batch-to-run mapping comes from the bucket prefix, not from a report field.
 Maps to: FuguTTX TRN-AUG.
+
+**The teach-stop verb prints no stop confirmation.**
+
+Evidence: run 33350323616 and scripts/train-driver lines 505-511 at commit
+6e93620. cmd_teach_stop runs `docker rm -f stx-vllm` in void context, discards
+the output and the status, and returns 0 on every path. The step exit code is
+the only stop signal in the run record.
+Scope: the teach-stop verb at commit 6e93620.
+Maps to: FuguTTX TRN-AUG.
