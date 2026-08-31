@@ -53,3 +53,13 @@ Evidence: run gh-33342320766, the up log. It reports 4 resources added, a
 routed_ipv4 IP delivered, and the tag stx:expires=2026-08-31T16:37:59Z set.
 Scope: one stack, one region, at a 17-hour lease.
 Maps to: FuguTTX IAC-TRAIN.
+
+**The down run destroys the full train stack, and the spend stops.**
+
+Evidence: run 33354203115, the down log. It reports 4 resources destroyed, the
+claim released, and the train keys deleted. The stack lived from 23:38:07Z on
+2026-08-30 to 03:33:59Z on 2026-08-31, 3.93 hours. The compute cost EUR 11.27 at
+EUR 2.8665 per hour, or EUR 11.47 by started hours.
+Scope: one teacher campaign, one H100-1-80G stack. The four persistent buckets
+stay intact, and infra-status then lists zero train resources.
+Maps to: FuguTTX IAC-TRAIN, the shared instructions.
