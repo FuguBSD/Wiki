@@ -46,3 +46,10 @@ released the claim, and printed "the destroy is confirmed: no train server
 remains".
 Scope: one reap, one stack.
 Maps to: FuguTTX IAC-TRAIN, the shared instructions.
+
+**One up run adds four resources, a routed_ipv4 IP, and the lease tag.**
+
+Evidence: run gh-33342320766, the up log. It reports 4 resources added, a
+routed_ipv4 IP delivered, and the tag stx:expires=2026-08-31T16:37:59Z set.
+Scope: one stack, one region, at a 17-hour lease.
+Maps to: FuguTTX IAC-TRAIN.
