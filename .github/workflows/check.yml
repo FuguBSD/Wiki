@@ -38,8 +38,16 @@ jobs:
       - name: Prose standard
         run: perl tooling/org/sync/scripts/ste-lint --root wiki
 
-      - name: Setup gitleaks
-        uses: FuguBSD/Tooling/actions/setup-gitleaks@main
+      # The setup-gitleaks action is gone. deps/Linux.txt names the
+      # release, deps/SHA256.txt records its digest, and the
+      # canonical scripts/deps compares the downloaded bytes against
+      # that digest. The script reads the manifest relative to the
+      # current directory, so the step runs inside the library.
+      - name: Install gitleaks
+        working-directory: wiki
+        run: |
+          perl ../tooling/org/sync/scripts/deps tool
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Secret scan
         run: gitleaks detect --source wiki --no-banner --redact
