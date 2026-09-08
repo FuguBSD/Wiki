@@ -24,6 +24,15 @@ This repository is public. A page must not hold a credential, a bucket suffix, a
 Scaleway Project identifier, or an IAM application name. A page can hold a
 price, a quota state, an error string and a run identifier.
 
+## The gates
+
+The check workflow runs two gates, and both run the canonical scripts of
+FuguBSD/Tooling. No synced copy lives here, so no copy can drift.
+
+The prose gate runs `scripts/ste-lint`. The secret gate runs gitleaks, and
+`deps/Linux.txt` names the release. `deps/SHA256.txt` records the digest of each
+download, and `scripts/deps` compares the downloaded bytes against it.
+
 ## How a page changes
 
 `scripts/wiki.pl` of the FuguBSD workspace writes every page. It commits at

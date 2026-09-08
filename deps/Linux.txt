@@ -1,0 +1,7 @@
+# External dependencies of the library. The canonical scripts/deps of
+# FuguBSD/Tooling installs each line. The library consumes no tooling
+# pack, so no copy of that script lives here.
+#
+# The secret gate of the check workflow runs gitleaks, so the tool
+# environment installs it before every other environment.
+tool bin gitleaks https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_{os}_{arch}.tar.gz gitleaks
