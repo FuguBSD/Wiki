@@ -40,3 +40,30 @@ network promise of `fetch`), CLI-CONFORMANCE-1 and CLI-CONFORMANCE-2 (fixture
 and token changes), DIST-INSTALL-1 (`make dist` writes install.sh), and
 DIST-KEY-1 (a test binds the keys). Evidence: the Constraints section of each
 plan.
+
+Claim: four pull requests merged on 2026-09-10 through pull-it with a
+three-member panel each: FuguBench PR 1 (eight plans, three rounds),
+Tooling PR 38 (plan 009, extra release assets, two rounds), Tooling PR 39
+(plan 010, the dist floor from `.toolingrc`, three rounds), and Workspace
+PR 8 (plan 003, the library origin in `.toolingrc`, three rounds).
+Evidence: the round tables in each pull request body.
+
+Claim: the panel found the FuguBench sandbox design wrong in two rounds.
+Round 1: the rows unveiled no exec path. Round 2: an unveil of the command
+path alone still fails, because unveil inherits across exec and a child
+needs `ld.so`, the libraries, `sh`, the git helpers, and the CA bundle. The
+landed design is: a verb that runs a child pledges and does not unveil; only
+`version`, `shim`, `install`, and `traces` unveil. Evidence: FuguBench
+plan 001 after PR 1, and ledger entries 1 and 19 of the panel.
+
+Claim: a plan must not name a rule number that does not exist yet, and must
+not name a sibling plan in prose. `spec-check` rejects the first as an
+unresolved citation, and the panel rejects the second under the citation
+rule of `spec/CLAUDE.md`. Evidence: the gate output on Tooling plans 009
+and 010 before the fix, and Tooling ledger 010 entry 1.
+
+Claim: residue of FuguBench PR 1 for the implementer of plans 001 and 007:
+`Fugu::Sandbox->unveil` dies on an absent required path, so the home paths
+of the unveil classes must be optional, and `install` must unveil the parent
+of `~/.local/bin` with `c`. CLI-SANDBOX-1 needs the same rewording as
+CLI-SANDBOX-2. Evidence: the residue section of the PR body.
