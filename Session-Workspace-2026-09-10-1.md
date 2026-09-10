@@ -25,3 +25,18 @@ Claim: the latest Fugu release 0.4.0 holds every module FuguBench plan 001
 needs, and it lacks `Fugu::Curl` and `Fugu::Ed25519`, so the deps verb and the
 update verb wait on a Fugu tag after Fugu plans 009 and 010 land. Evidence:
 `gh release list -R FuguBSD/Fugu` and the `lib/Fugu/` tree of `v0.4.0`.
+
+Claim: the eight FuguBench implementation plans pass `make check` on the branch
+`plans-implementation` of the FuguBench clone in this worktree, and they cite
+every one of the 42 units under `Implements:` across the set. Evidence:
+`spec-check: 23 documents pass, 42 units, 194 rules` and `ste-lint: prose
+passes` on 2026-09-10.
+
+Claim: the plan set found six specification rules that the implementation must
+reword with the code: CLI-CONFIG-2 (the home of a key), CLI-CHECKOUT-5 (the
+verbs that read no checkout), CLI-SANDBOX-2 (the trace root, the library
+directory, the start directory of `deps`, the running file of `update`, and the
+network promise of `fetch`), CLI-CONFORMANCE-1 and CLI-CONFORMANCE-2 (fixture
+and token changes), DIST-INSTALL-1 (`make dist` writes install.sh), and
+DIST-KEY-1 (a test binds the keys). Evidence: the Constraints section of each
+plan.
