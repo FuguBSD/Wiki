@@ -67,3 +67,5 @@ Claim: residue of FuguBench PR 1 for the implementer of plans 001 and 007:
 of the unveil classes must be optional, and `install` must unveil the parent
 of `~/.local/bin` with `c`. CLI-SANDBOX-1 needs the same rewording as
 CLI-SANDBOX-2. Evidence: the residue section of the PR body.
+
+Closed: 2026-09-10T12:54:36Z
