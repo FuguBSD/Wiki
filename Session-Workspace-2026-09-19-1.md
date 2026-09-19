@@ -70,3 +70,27 @@ Claim: a mutation test inside the guest can give a false pass, because a copied
 *.d dependency file holds an absolute path. Evidence: a first mutation round
 gave five false passes, because make rebuilt the original cipher.c from the
 source directory. make clean in the copy fixed it.
+
+Claim: FuguPass plan 012 cannot prove the SeedQR handoff as it is written, and
+the cause is the mask.
+
+Evidence: FuguSeed pins mask 0 in spec/qr.md QR-MATRIX-4 and in D-08, and the
+one shared picture fixture is mask 0. FuguPass plan 012 line 35 names
+libqrencode as the encoder, and that library selects the mask by penalty score.
+Plan 012 line 44 states "Standard SeedQR form, version 2, numeric mode" and
+names no mask, so no FuguPass document holds the value mask 0. The test at plan
+012 line 87, "the render of the 12 words of test vector 4 equals the picture",
+holds only at mask 0 and level L. A FuguPass render can therefore differ module
+for module while every FuguPass gate stays green.
+
+Two more claims in the same plan: line 51 copies the FuguSeed fixture and names
+no FuguSeed commit, against the shared-artifact rule; and it states no quiet
+zone width, where FuguSeed states 4 light modules in QR-MANUAL-4.
+
+FuguPass PROG-QR-2 bounds the render as "the Standard SeedQR form only (D-22)"
+and carries no version, no error correction level and no mask, so the shared
+form lives in no FuguPass specification unit today, only in a plan.
+
+Admitted: none of this blocks the FuguSeed merge. FuguSeed D-15 makes the
+FuguPass specification a reference consumer, not a requirement. Each item is a
+claim in FuguPass text, and FuguPass plan 012 is unimplemented.
