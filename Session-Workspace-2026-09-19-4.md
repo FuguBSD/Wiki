@@ -12,3 +12,5 @@ The same step also contradicted fuguseed-qr(1) line 94, "Keep the paper as you k
 Claim: a fix round writes a new falsehood into the text that it corrects. Commit a5b60a2 replaced a false cross-repository claim in OVW-VOCABULARY-4 with "The device scans the SeedQR with a camera ... (D-13)". D-13 states no camera, and its rationale admits any device that accepts 12 BIP39 words.
 Evidence: FuguSeed spec/DECISIONS.md line 21, and spec/overview.md before commit 29e78f8.
 The remedy was a removal, not a replacement. A vocabulary rule defines a term, and the capability belongs to the unit that owns it.
+
+Closed: 2026-09-19T19:55:42Z
