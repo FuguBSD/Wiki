@@ -49,3 +49,32 @@ the cited decision, not only the cited rule.
 
 Evidence: FuguOracle PR 12, merged 2026-09-20 as 626692e. The panel ran three
 rounds and left ten residue entries.
+
+Claim: the session rule of FuguBSD now triggers on the context, and it sits in one file for every repository.
+
+The old rule landed one deliverable in one session. It was stated five times:
+twice in the workspace rules, in the `pull-it` skill, in Tooling REV-MERGE-3,
+and in the master plan. The new rule reads "Carry the work while the context has
+room. Start a new session when it does not." It sits in the root `CLAUDE.md` of
+the org pack, which every repository consumes. The `pull-it` skill lost its
+`## Stop` section, and the workspace rules lost two bullets. The change removed
+more words than it added in both repositories.
+
+Claim: eleven consumers took the pack in one pass, and the sync carried older drift with it.
+
+FuguCTX, FuguSTX, FuguWeb and Repositories also took `deps/KEYS.txt` from
+Tooling 4ebcb0f, the releng key, which each had missed. The workspace `main` had
+been red for three commits on that same drift: the Sync job reported
+"deps/KEYS.txt: content differs". A sync gate catches a stale consumer, and a
+merge from the main checkout hides the red from the session that caused it.
+
+Claim: two recorded local test failures did not reproduce.
+
+Fugu `openpgp.t` and FuguWeb `keys.t` were recorded in 2026-09 as failing on the
+operator Mac while CI stayed green. Both passed on 2026-09-20, in full runs of
+841 and 346 tests. FuguVM `mirror.t`, red since 2026-09-13, passed too, because
+`15f6468` repaired it. A stale exemption hides a real defect.
+
+Evidence: Tooling 6845c37, Workspace 2e1c48d and 6a4a577, and the eleven sync
+commits of 2026-09-20. FuguSTX CI failed one time on an upstream Gutenberg 504
+in a network step, and the rerun passed.
