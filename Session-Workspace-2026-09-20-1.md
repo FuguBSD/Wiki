@@ -37,3 +37,5 @@ manual pages, and no package added one of them to that list. `make check`, the
 drift gate and every guest run stayed green, because the main session copied
 each file by hand. The review panel caught it, unanimous. A plan that adds a
 source file must name the copy list in its Files table.
+
+Closed: 2026-09-20T15:41:17Z
