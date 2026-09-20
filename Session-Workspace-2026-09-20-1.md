@@ -28,3 +28,12 @@ Claim: an implementer reported 1,271 lines for the same tree, and the number was
 wrong by 326 lines.
 Evidence: the two measurements ran on one commit, 02e52c3. Measure a number of a
 report before it enters a register note or a commit message.
+
+Claim: a repository can hold a second source list that no gate reads, and six
+packages can miss it.
+Evidence: FuguOracle `regress/guest` holds `SOURCE`, the files that the script
+copies into the guest. Plan 004 added main.c, http.c, http.h, keygen.c and two
+manual pages, and no package added one of them to that list. `make check`, the
+drift gate and every guest run stayed green, because the main session copied
+each file by hand. The review panel caught it, unanimous. A plan that adds a
+source file must name the copy list in its Files table.
