@@ -78,3 +78,5 @@ operator Mac while CI stayed green. Both passed on 2026-09-20, in full runs of
 Evidence: Tooling 6845c37, Workspace 2e1c48d and 6a4a577, and the eleven sync
 commits of 2026-09-20. FuguSTX CI failed one time on an upstream Gutenberg 504
 in a network step, and the rerun passed.
+
+Closed: 2026-09-20T10:30:50Z
