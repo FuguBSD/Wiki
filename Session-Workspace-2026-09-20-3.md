@@ -17,3 +17,17 @@ This matters for FuguPass PROG-BUILD-2, which puts every test source in the one
 directory `src/regress`. A second test program needs `PROGS= kat share` in the
 one Makefile. Line 104 also sets `MAN ?= ${PROGS:=.1}`, so that Makefile must
 suppress the man pages.
+
+Claim: two implementer agents that share one checkout race on the git index,
+even when their file sets are disjoint.
+Evidence: FuguPass plan 003, 2026-09-20. Three agents ran in parallel on
+disjoint files. The vectors agent ran `git add` on its six paths, and the C
+agent staged its own files before the first agent reached `git commit`. The
+commit took both sets. The vectors agent repaired with `git reset --soft
+HEAD~1`, the C agent ran the same repair, and that reset the first repair away.
+The history came out correct after the second rebuild, and no work was lost.
+A disjoint file set is not enough, because `.git/index` is one shared file. The
+recipe of the master plan says to run packages in parallel when their file sets
+are disjoint. That rule needs a staging rule beside it: each agent must commit
+with `git commit --only -- <its paths>`, and never with a bare `git add` plus
+`git commit`. A per-agent worktree would also settle it.
