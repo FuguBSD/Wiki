@@ -31,3 +31,22 @@ recipe of the master plan says to run packages in parallel when their file sets
 are disjoint. That rule needs a staging rule beside it: each agent must commit
 with `git commit --only -- <its paths>`, and never with a bare `git add` plus
 `git commit`. A per-agent worktree would also settle it.
+
+Claim: the custody regress tests of FuguPass plan 003 catch the defects they
+target. Two mutations prove it, in the OpenBSD 7.8 guest at commit `a39bd73`.
+Evidence: mutation 1 changed the GF(256) reduction constant `FIELD_LOW` from
+`0x1b` to `0x1d` in `src/share.c`. The field, split and combine groups all
+failed, with 21 mismatch lines and exit 1. The restored build gave exit 0.
+Mutation 2 replaced `BN_mod(key, num, mod, ctx)` with `BN_copy(key, num)` in
+`derive_client_reduce()` of `src/derive.c`, which skips the modulus of
+KEY-CLIENT-2 and keeps the addition of 1. One line failed: "the edge client
+key". The restored build gave exit 0.
+The second mutation is the useful one. Every real `t_ei` stays below `q - 1`,
+so the reduction is a no-op for each derived vector, and the slot 17 vector
+cannot catch a missing modulus. Only the synthetic edge vector of 32 `0xff`
+bytes catches it. A KAT of a reduction needs an input that the derivation
+cannot reach.
+Method note: run the built program from the `obj` directory, because `make obj`
+puts it there and the source directory holds none. Also run `fuguvm` from the
+project directory, because the untracked `.fuguvmrc` sets `state_dir`, and
+`fuguvm` reports "VM 'default' not found" from anywhere else.
