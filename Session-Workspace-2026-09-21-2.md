@@ -126,3 +126,31 @@ Put the work directory of a guest build on `/home`. The FuguOracle
 `regress/guest` script already states that rule, and a session that copies a
 tree by hand loses it. The failure looks like a compiler defect, and it is a
 full disk.
+
+Claim: the FuguPass interop harness invented a FuguOracle deployment that
+FuguOracle has not designed, and every FuguPass gate stayed green.
+
+Evidence: `tests/harness` at `76e0ab9` held a counterparty record that probed
+`/etc/rc.d/fuguoracle`, the user `_fuguoracle` and `fuguoracle-keygen`, and that
+started the service with `rcctl -f start fuguoracle httpd` against a store at
+`/var/www/fuguoracle`. FuguOracle `spec/STATUS.md` reads `open` for DEPLOY-HTTPD
+and for DEPLOY-SERVICE. Its SEC-SANDBOX note says the chroot and the dedicated
+user need the rc.d script of DEPLOY-SERVICE. No FuguOracle unit names any of
+those paths today, and `regress/cgi.sh` runs the CGI program directly, with the
+variables in the environment and the body on standard input. No FuguOracle
+service speaks HTTP yet.
+
+Only the `probe` closure ever ran, so the start, stop and release paths were
+unproven code that could not run. The probe rested on a build at
+`/home/fuguoracle/src/fuguoracle`, which is a leftover of an earlier session and
+not an artifact that any repository produces.
+
+The plan asked for the record: "When a FuguOracle build exists, a second record
+names its stack in the guest." A build of the program is not a deployment of the
+service, and the plan read the one as the other.
+
+Admitted: a test that skips is not a test that works. A counterparty record
+whose start path never ran is a guess at a sibling interface, and a skip line
+reports it as a healthy absence. Probe availability at the artifact that the
+sibling actually publishes, and read the sibling register before you write the
+recipe.
