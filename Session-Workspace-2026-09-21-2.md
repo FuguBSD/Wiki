@@ -213,3 +213,36 @@ open. That statement holds on any machine.
 Admitted: a fact measured in a scratch guest is evidence for a session, and it
 is not a fact for a register. Ask what reproduces a claim before it enters the
 one record of implementation state.
+
+Claim: a mutation of the counterparty proves an interop assertion, and it is
+the one proof that separates a live assertion from a vacuous one.
+
+Evidence: round 2 of the FuguPass plan 005 panel. Two rewrites of the same
+reveal leg were vacuous, and each looked green over 100 assertions. The first
+compared field widths that `print_hex()` makes equal by construction. The second
+compared answers of four records, and `vault()` of `tests/harness` takes the
+next slot at each call, so four client keys gave four answers under any oracle
+behavior.
+
+The third rewrite drives every cause against one record, and the fixer proved it
+by mutating the upstream `blind_pin_server`. A fixed junk key in `pindb.py`
+failed "the wiped record and the stale counter give two answers". A `pass` in
+place of the counter assertion failed "a counter below the stored one gives
+junk". It restored `pindb.py` and checked the digest.
+
+Admitted: a passing count is no evidence. Ask of each new assertion what
+mutation fails it, and prefer a mutation of the counterparty when the claim is
+about the counterparty.
+
+Claim: the strike arithmetic of a FuguOracle record does not follow the order
+that a reader expects, and a test that assumes the expected order tests nothing.
+
+Evidence: FuguOracle OPS-GET-4 persists `count = 0` on a correct pin, so a
+successful reveal resets the strike count. OPS-GET-2 runs the anti-replay check
+before the pin comparison, so after a forged low counter even a wrong passphrase
+burns no strike. OPS-GET-5 persists the counter of the client on a wrong pin, so
+the two sides stay in lockstep.
+
+The main session briefed an order that rested on the expected reading, and the
+fixer read the sibling rules and corrected it. Read the sibling specification
+before you write the order of a test, and name the rule that each step rests on.
