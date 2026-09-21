@@ -246,3 +246,5 @@ the two sides stay in lockstep.
 The main session briefed an order that rested on the expected reading, and the
 fixer read the sibling rules and corrected it. Read the sibling specification
 before you write the order of a test, and name the rule that each step rests on.
+
+Closed: 2026-09-21T13:01:00Z
