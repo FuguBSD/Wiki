@@ -69,3 +69,26 @@ Claim: `src/oracle.c` of package 1 compiles clean on OpenBSD 7.8 arm64 under
 Evidence: a `git archive` of the branch, `fuguvm put`, and `make obj && make` in
 the guest. `ar t` lists `oracle.o` in the archive, and the 25 transport tests
 pass.
+
+Claim: `make ste-lint` checks no C comment, so the largest body of prose in
+FuguPass and in FuguOracle passes every gate unread.
+
+Evidence: `_files()` of `scripts/ste-lint` collects `.md` files of the root and
+of `spec/` only. Tooling STE-SCOPE-1 states that scope, and it names `.github/`,
+`.claude/`, `lib/`, `plans/` and `t/`. It names no source directory. The
+FuguPass copy of the script is byte-identical to `org/sync/scripts/ste-lint` of
+the org pack, so the copy has not diverged.
+
+The scope is deliberate. The consequence is not. `CLAUDE.md` of FuguPass says
+"Write every artifact and every reply in ASD-STE100 Simplified Technical
+English. `make ste-lint` enforces it." FuguPass holds about 5,000 lines of C,
+and the comment blocks of `src/` carry the design prose of the tree. None of it
+reaches the lint. The same holds for FuguOracle.
+
+A change belongs in Tooling, in STE-SCOPE-1 and in the script. A C comment needs
+a fence-aware reader, because a comment block holds code examples and unit IDs.
+This is outside FuguPass plan 005.
+
+Admitted: a rule that names its own enforcement can still leave the main
+artifact unchecked. Read the scope of a gate before you trust the sentence that
+cites it.
