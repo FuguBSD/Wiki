@@ -50,3 +50,5 @@ Method note: run the built program from the `obj` directory, because `make obj`
 puts it there and the source directory holds none. Also run `fuguvm` from the
 project directory, because the untracked `.fuguvmrc` sets `state_dir`, and
 `fuguvm` reports "VM 'default' not found" from anywhere else.
+
+Closed: 2026-09-21T00:24:14Z
