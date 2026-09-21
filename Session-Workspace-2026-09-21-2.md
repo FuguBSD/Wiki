@@ -154,3 +154,32 @@ whose start path never ran is a guess at a sibling interface, and a skip line
 reports it as a healthy absence. Probe availability at the artifact that the
 sibling actually publishes, and read the sibling register before you write the
 recipe.
+
+Claim: three FuguPass rules require an interop leg that cannot run, because
+they trigger on a FuguOracle build and not on a FuguOracle deployment.
+
+Evidence: `spec/testing.md` TEST-HARNESS-2 and TEST-MASK-5 each read "When a
+FuguOracle build exists, the harness must run against FuguOracle", and
+`spec/DECISIONS.md` D-19 carries the same phrase. A build of the FuguOracle
+program sits in the guest today. No FuguOracle service speaks HTTP, because
+DEPLOY-HTTPD and DEPLOY-SERVICE of FuguOracle both read `open`.
+
+So the rules, read to the letter, demand a leg against an artifact that answers
+no request. The correction is one word, and it is not a typo: under "build" the
+leg is mandatory now, and under "deployment" it waits on the FuguOracle
+deployment units. That moves the acceptance bar of a whole phase, so the
+operator decides it, not an agent. D-19 is a decision, and a change of a
+decision text needs human approval.
+
+Admitted: a trigger word carries an acceptance bar. Read the trigger of a rule
+against the artifact that the sibling repository actually publishes, and count
+every site before the fix: this one sits in two rules and one decision.
+
+Claim: the third-strike leg of the harness proves FuguPass ORC-CONFORM-2, the
+clause that a client key must not depend on the passphrase.
+
+Evidence: three reveals under a wrong passphrase wiped the record that an
+enrollment under the correct passphrase created. A client key that depended on
+the passphrase would address another record, and the enrolled record would keep
+its strikes. The coherence table of the master plan assigns that proof to the
+harness, and the leg earns it without naming it.
