@@ -92,3 +92,37 @@ This is outside FuguPass plan 005.
 Admitted: a rule that names its own enforcement can still leave the main
 artifact unchecked. Read the scope of a gate before you trust the sentence that
 cites it.
+
+Claim: the FuguPass record client works end to end against the upstream
+`blind_pin_server`, and a re-enrollment changes the mask while the revealed
+share stays byte-identical.
+
+Evidence: a build of branch `feat/005-oracle-records` at `5e7b1ee` in the
+OpenBSD 7.8 arm64 guest, and `oracle-client` against a host counterparty at
+`http://10.0.2.2:8096`.
+
+The share after a re-enrollment stayed `62e0050f...`, and the mask moved from
+`530718751db1e3fc...` to `f0e360b7b4ec5a33...`. This measures the finding that
+the gate raised against the landed interface: a TEST-MASK-2 test over the share
+asserts the opposite of the rule that it cites. The fifth parameter `maskout` of
+`oracle_reveal()` carries the answer plaintext, and the test needs it.
+
+The other legs also answered. Two wrong passphrases each gave `junk` with a
+different answer, and the field widths stayed equal (ORC-REVEAL-4, TEST-MASK-4).
+The third strike wiped the record, and the correct passphrase then gave `junk`
+that never equalled the old mask (TEST-MASK-3). A canary enrollment and its
+round trip gave `ok`, and a mistyped second read gave `error` (ORC-CANARY-6,
+ORC-CANARY-7). The counters file held one line for each record name.
+
+Claim: the root partition of the FuguVM OpenBSD guest holds 167 MB, and a build
+of the FuguPass tree fills it.
+
+Evidence: a build under `/root` stopped with "IO failure on output stream: No
+space left on device" at `vault.o`, after it linked five of the six programs.
+`df -h` then read 106% on `/dev/sd0a`, and 15% on `/dev/sd0l` at `/home`, which
+holds 1.1 GB.
+
+Put the work directory of a guest build on `/home`. The FuguOracle
+`regress/guest` script already states that rule, and a session that copies a
+tree by hand loses it. The failure looks like a compiler defect, and it is a
+full disk.
