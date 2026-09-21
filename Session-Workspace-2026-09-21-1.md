@@ -51,3 +51,5 @@ status, while the code returns the status before the reader runs, the test
 pins `http 500` for an empty-bodied 500, and a sibling rule of the same
 document requires the two states to stay distinct. Brief a fixer to make the
 smallest true change, and treat an unrequested edit as a finding of its own.
+
+Closed: 2026-09-21T05:17:23Z
