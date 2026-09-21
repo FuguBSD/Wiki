@@ -28,3 +28,44 @@ store (FuguPass TEST-MASK-6).
 The server speaks plain HTTP. FuguPass `http_post()` accepts the scheme http, so
 a client in the OpenBSD guest can reach the host server at the QEMU gateway
 address (FuguPass TEST-HARNESS-7).
+
+Claim: a reused value form gave the FuguPass replay counter a slot-index bound,
+and the client would stop sending a valid counter in 2038.
+
+Evidence: `src/vault.c` `value_ok()` maps `VAULT_VALUE_NUMBER` to
+`vault_number(text, len, VAULT_SLOT_MAX, &value)`, and `VAULT_SLOT_MAX` is
+`INT32_MAX`. The counters file reuses that form. The implementer read the clamp
+as a conflict between VAULT-FORMAT-7 and ORC-COUNTER-5, and it wrote the clamp
+into `src/oracle.c` with a comment.
+
+The reading was wrong. VAULT-FORMAT-7 states a form, "unpadded decimal ASCII",
+and no bound. `src/vault.h` ties the 2^31 bound to KEY-ENTRY-1, which bounds a
+slot index. A replay counter is not a slot index, and ORC-COUNTER-5 states that
+the Unix-seconds scheme stays below `0xFFFFFFFF` until 2106. No specification
+change was needed, and the code disagreed with two rules that were already
+correct.
+
+Claim: FuguPass TEST-MASK-2 cannot be written against a client that returns the
+share alone.
+
+Evidence: `oracle_reveal()` gives `share(K_e, i)`. KEY-SHARE-5 makes that value a
+function of `K_e`, the oracle index and the threshold, and not of the mask.
+`oracle_enroll()` rewrites the wrap as `c_ei = share(K_e, i) XOR f(s_ei, ...)`.
+A re-enrollment therefore changes the mask and the wrap together, and the
+revealed share stays byte-identical.
+
+TEST-MASK-2 asserts that a re-enrollment changes the answer. A test over the
+share asserts the opposite of that rule. The interface needs an optional out
+parameter for the answer plaintext, and the mask-stability test is its one
+caller.
+
+Read an interface against the test that must use it. A test list in a plan can
+name a rule that the landed interface cannot express, and every gate stays
+green.
+
+Claim: `src/oracle.c` of package 1 compiles clean on OpenBSD 7.8 arm64 under
+`-Wall -Wextra -Werror`, and it lands in `libfugupass.a`.
+
+Evidence: a `git archive` of the branch, `fuguvm put`, and `make obj && make` in
+the guest. `ar t` lists `oracle.o` in the archive, and the 25 transport tests
+pass.
