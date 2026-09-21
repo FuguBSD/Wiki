@@ -183,3 +183,33 @@ enrollment under the correct passphrase created. A client key that depended on
 the passphrase would address another record, and the enrolled record would keep
 its strikes. The coherence table of the master plan assigns that proof to the
 harness, and the leg earns it without naming it.
+
+Claim: the FuguPass interop harness proves FuguOracle CLIENT-MODEL, the clause
+that a client key must not depend on the passphrase, and the leg that proves it
+carries no name that says so.
+
+Evidence: the coherence review of FuguPass plan 005 against FuguOracle. In
+`2-reveal.pl`, the wiped-record vault takes three reveals under a wrong
+passphrase, and then one reveal under the correct passphrase that must answer
+junk. A passphrase-dependent client key would address a missing record at each
+wrong guess, burn no strike, and let the fourth call answer `ok`. The leg
+therefore fails when the client key depends on the passphrase.
+
+The master plan assigns that proof to the harness, and the register claim on
+ORC-CONFORM is honest. A test can earn a shared-artifact claim without citing
+it, and the citation is what a later reader needs.
+
+Claim: a register must not rest a unit state on an artifact that no repository
+produces.
+
+Evidence: the FuguPass TEST-HARNESS and TEST-MASK notes said "a FuguOracle build
+exists in the guest". That build is a leftover of an earlier session in one
+developer's guest. FuguOracle ARCH-STACK-5 is absent and TEST-INTEROP is open,
+so no FuguOracle artifact states it, and no gate reproduces it.
+
+The register now names what the leg needs, and the two FuguOracle units that are
+open. That statement holds on any machine.
+
+Admitted: a fact measured in a scratch guest is evidence for a session, and it
+is not a fact for a register. Ask what reproduces a claim before it enters the
+one record of implementation state.
