@@ -25,3 +25,19 @@ the list, and `EACCES` for an unveiled path used beyond its permission. It
 never gives `EPERM`.
 Evidence: `src/regress/sandbox` of FuguPass, measured in the arm64 guest.
 FuguPass plan 006 claimed `EPERM`, and the measurement corrected it.
+
+Claim: `unveil(2)` state survives `execve(2)` on OpenBSD 7.8 only when the
+process gives `pledge(2)` a non-NULL `execpromises`. With `execpromises` NULL,
+the child starts with a view of the whole filesystem. `unveil(NULL, NULL)`
+makes no difference to this: the lock disables a later `unveil()` call, and it
+does not change what an `execve` child inherits. A `fork(2)` child inherits the
+unveil either way.
+Evidence: eleven probe runs in the arm64 guest, 2026-09-22. The same binary
+and the same unveil list, with only `execpromises` changed: with
+`pledge("stdio rpath exec proc", "stdio rpath")` the child cannot read the path
+outside the list, and with `pledge("stdio rpath exec proc", NULL)` it reads it.
+`man 2 unveil` of OpenBSD 7.8 states nothing about `fork` or `execve`, so the
+page can neither support nor refute the claim; only a probe settles it.
+Admitted: never record the short form "unveil does not survive execve". The
+short form is the trap that produced the first, wrong conclusion of this run,
+which was that a rule deriving paths for a child process protects nothing.
