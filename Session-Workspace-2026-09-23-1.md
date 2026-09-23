@@ -16,3 +16,24 @@ plans/ for ORC-CANARY finds plan 008 and plan 013 alone, and plan 013 holds the
 documentation rule ORC-CANARY-10.
 This session keeps the STATUS sentence about the exclusion, and it reports the
 gap to the operator. A takeover must not re-plan.
+
+Claim: FuguPass plan 008 asks for one read more than ORC-ENROLL-8 requires.
+Evidence: the plan states "The change reads both passphrases twice". ORC-ENROLL-8
+requires the double read of the new passphrase alone, and it verifies the old
+passphrase against the canary record of each live oracle. ORC-ENROLL-10 requires
+a resumed change to read "both passphrases again", which is one read of each.
+The canary verification is the stronger check, so the second read of the old
+passphrase adds a prompt and proves nothing.
+The design of record is the specification, because a plan holds steps and the
+specification holds the design. Package 1 followed the plan, so this session
+sends a fixer to follow ORC-ENROLL-8 instead.
+
+Claim: ORC-ENROLL states no rule for a change that starts below k reachable
+oracles.
+Evidence: ORC-ENROLL-11 covers the mid-run case, "With a live oracle
+unreachable, the change stays incomplete, and the marker stays". A change that
+starts below k can reconstruct no K_e, by ORC-QUORUM-6, so it stops before its
+first set_pin and before the marker exists. Package 1 stops with the per-oracle
+state report and writes no marker. The last package of this plan states that
+case in ORC-ENROLL-11, because the code and the specification must agree in the
+same change.
