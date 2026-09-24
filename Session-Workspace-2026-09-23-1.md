@@ -37,3 +37,14 @@ first set_pin and before the marker exists. Package 1 stops with the per-oracle
 state report and writes no marker. The last package of this plan states that
 case in ORC-ENROLL-11, because the code and the specification must agree in the
 same change.
+
+Claim: leg 8 of the FuguPass harness fails four rotation assertions at random.
+Evidence: the run of 2026-09-23 at commit 8b4148a reported "not ok 28" to
+"not ok 31" of tests/harness.d/8-session.pl, the rotation of add, because
+"show a1" gave an empty standard output. The same commit passed those four on
+the re-run, and the parent commit 3f83219 passed them as well. Three runs of
+this session hold two passes and one failure of one leg. The console read of
+the guest is the suspect, because no code of this branch reaches a subcommand
+of the tool yet.
+A run that fails leg 8 alone needs a second run before anyone calls it a
+defect of the change. A run that fails leg 8 twice is a defect.
