@@ -79,3 +79,5 @@ mutation then failed six assertions in seconds.
 A leg that passes for the wrong reason can also fail for the wrong reason. The
 mutation run is the only way to see either, and a timeout is the signature of a
 leg that cannot express its own failure.
+
+Closed: 2026-09-24T08:39:51Z
