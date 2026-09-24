@@ -48,3 +48,21 @@ the guest is the suspect, because no code of this branch reaches a subcommand
 of the tool yet.
 A run that fails leg 8 alone needs a second run before anyone calls it a
 defect of the change. A run that fails leg 8 twice is a defect.
+
+Claim: a revocation kit of FuguPass is derived data, so no ceremony must export
+one.
+Evidence: ORC-REVOKE-6 states that a kit holds the machine name and, for each
+oracle, that oracle's record file names. A record name is the hash of the
+record's compressed public key. KEY-CLIENT-1 derives the client key from the
+device factor X, and KEY-CLIENT-4 forbids a dependency on the passphrase.
+KEY-DEVICE-2 keeps X on disk in the machine-local set. So a machine derives its
+own kit with no plate, no passphrase, no quorum and no network. KEY-DEVICE-4 and
+ORC-REVOKE-4 regenerate X and the client keys of a lost machine from the plate.
+An exported file is therefore a cache of derived data, and it goes stale in
+silence. A refill adds slots, and the kit of the last ceremony lists none of
+their records. The owner then revokes the listed records, the tool reports
+success, and the new records still answer at every oracle. A missing kit fails
+loudly, and a stale one does not.
+The operator authorized the design on 2026-09-24. The kit becomes the output of
+one command, CER-CREATE-9 and CER-PROVISION-9 go, and ORC-REVOKE-6 states the
+production instead of the export.
