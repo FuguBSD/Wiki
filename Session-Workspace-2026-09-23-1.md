@@ -66,3 +66,16 @@ loudly, and a stale one does not.
 The operator authorized the design on 2026-09-24. The kit becomes the output of
 one command, CER-CREATE-9 and CER-PROVISION-9 go, and ORC-REVOKE-6 states the
 production instead of the export.
+
+Claim: a mutation run finds a test leg that hangs in place of a failure.
+Evidence: the FuguPass plan 008 run proved each new harness leg with the
+mutation it targets. Leg 7, the refill that must refuse while the change marker
+exists, held no answer for the passphrase prompt. Against the correct code the
+refusal came first, so the leg passed and the prompt never appeared. The
+mutation that removed the marker gate let the refill start, and the leg then
+waited on the console for the timeout of 24 minutes. It reported a timeout, and
+no assertion named the cause. One answer in the step fixed it, and the same
+mutation then failed six assertions in seconds.
+A leg that passes for the wrong reason can also fail for the wrong reason. The
+mutation run is the only way to see either, and a timeout is the signature of a
+leg that cannot express its own failure.
