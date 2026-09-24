@@ -81,3 +81,5 @@ Claim: `SSH_AUTH_SOCK` that points at the fuguvm agent breaks `git commit`.
 That agent holds no signing key, so the commit fails with `Couldn't find key in
 agent?`. Commit first, then export the harness environment in a subshell.
 Evidence: repeated in three agents of this run.
+
+Closed: 2026-09-24T08:39:50Z
