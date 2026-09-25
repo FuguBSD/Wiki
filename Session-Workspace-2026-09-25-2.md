@@ -16,3 +16,11 @@ document states the response form. Checked at the start of Pass 010,
 The vocabulary gate stays byte-identical across the three repositories
 (`eaf34b1f…`) after the three follow-ups, and OVW-VOCABULARY-3 holds the
 vendored-copy sentence in all three.
+
+Claim: a harness script that exports the fuguvm agent socket for its whole run
+loses every git commit of that run with "Couldn't find key in agent".
+Evidence: the Pass 010 mutation chain of 2026-09-25 23:50 ran nine mutations
+in seconds with no proof, because `git commit` signs through the caller's
+`SSH_AUTH_SOCK`, and the caller had exported `~/.fuguvm/agent.sock`. The
+Bitwarden agent was unlocked the whole time. The chain passed once the script
+set the fuguvm socket for `make harness` alone.
