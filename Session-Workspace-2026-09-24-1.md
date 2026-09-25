@@ -29,3 +29,5 @@ A runner that targets FuguOracle subclasses PINServerTest, replaces the two
 class fixtures, and runs the v2 halves of the mixed tests through their _impl
 methods. Record names match upstream (hex sha256 of the public key plus .pin),
 so a pins symlink lets the upstream storage assertions read FuguOracle records.
+
+Closed: 2026-09-25T19:44:05Z
