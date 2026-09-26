@@ -32,3 +32,12 @@ the five texts the dispatch named, and round 2 returned the same claim at
 three prose sites of `spec/keys.md` and `spec/entries.md` that cite REC-PLATE.
 The dispatch had said "every text" and then named the files. The round 2 fix
 gets `grep -n REC-PLATE spec/*.md src tests` as the enumeration.
+
+Claim: a specification rule that demands a computation with no consumer is a
+false rule, and a panel reads it as a code defect first.
+Evidence: Pass 010 merged 2026-09-26 as FuguPass #23 (`0418992`). REC-PLATE-1
+asked the plate-alone scan to re-derive every entry key; an entry key opens an
+entry file, and that path has none. Two reviewers of round 1 reported the code,
+the remedy corrected the rule and five texts, and rounds 2 and 3 found the
+same claim at four more prose sites, one in the approved share-split analysis.
+The harness held seventeen legs and 868 assertions on `b4eacdc`.
