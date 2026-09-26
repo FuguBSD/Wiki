@@ -24,3 +24,11 @@ in seconds with no proof, because `git commit` signs through the caller's
 `SSH_AUTH_SOCK`, and the caller had exported `~/.fuguvm/agent.sock`. The
 Bitwarden agent was unlocked the whole time. The chain passed once the script
 set the fuguvm socket for `make harness` alone.
+
+Claim: a fixer that gets a file list enumerates the sites in those files only,
+so the list must be a grep over the whole tree, not a set of file names.
+Evidence: the round 1 fix of Pass 010 (2026-09-26) corrected REC-PLATE-1 and
+the five texts the dispatch named, and round 2 returned the same claim at
+three prose sites of `spec/keys.md` and `spec/entries.md` that cite REC-PLATE.
+The dispatch had said "every text" and then named the files. The round 2 fix
+gets `grep -n REC-PLATE spec/*.md src tests` as the enumeration.
