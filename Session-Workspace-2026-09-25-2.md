@@ -51,3 +51,5 @@ ORC-REVOKE-8 and ORC-REVOKE-11 of FuguPass still claimed a permanent lock from
 before Oracle 003; the Oracle 003 check of 2026-09-20 had recorded the gap and
 assigned it to Pass 009, which landed the retired mark and left the rules.
 Three panel members reported the rules in round 1, and D-03 settled the side.
+
+Closed: 2026-09-26T05:38:07Z
