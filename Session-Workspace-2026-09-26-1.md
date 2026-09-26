@@ -21,3 +21,5 @@ Claim: two panel members named `pkg_add p5-App-cpanminus` as the remedy for the 
 Evidence: `scratch/index-7.8-aarch64.txt` of the same clone, fetched from cdn.openbsd.org on 2026-09-26; the ledger entry 2 of `scratch/review/ledger.md`.
 Claim: `gh pr checks --watch` issued in the same command as the `git push` can race the check registration and exit 1 with "No checks reported"; a second watch a few seconds later sees both checks.
 Evidence: `scratch/pr-checks-2.log` of the same clone, first and second run, 2026-09-26.
+
+Closed: 2026-09-26T15:58:30Z
