@@ -41,3 +41,13 @@ entry file, and that path has none. Two reviewers of round 1 reported the code,
 the remedy corrected the rule and five texts, and rounds 2 and 3 found the
 same claim at four more prose sites, one in the approved share-split analysis.
 The harness held seventeen legs and 868 assertions on `b4eacdc`.
+
+Claim: a stale rule about a sibling's behavior survives every gate until a
+document restates it, and the coherence review of that document is the one
+reader that compares the two repositories sentence by sentence.
+Evidence: Pass 013 merged 2026-09-26 as FuguPass #24 (`4800f58`). The runbook
+followed FuguOracle OPS-GET-6 (the third strike wipes the record), and
+ORC-REVOKE-8 and ORC-REVOKE-11 of FuguPass still claimed a permanent lock from
+before Oracle 003; the Oracle 003 check of 2026-09-20 had recorded the gap and
+assigned it to Pass 009, which landed the retired mark and left the rules.
+Three panel members reported the rules in round 1, and D-03 settled the side.
